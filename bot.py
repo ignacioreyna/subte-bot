@@ -57,7 +57,8 @@ def error(update, context):
 
 
 def main():
-    updater = Updater(token=os.environ['BOT_TOKEN'], use_context=True)
+    token = os.environ['BOT_TOKEN']
+    updater = Updater(token=token, use_context=True)
     dispatcher = updater.dispatcher
 
     start_handler = CommandHandler('start', start)
@@ -78,7 +79,14 @@ def main():
 
     unknown_handler = MessageHandler(Filters.command, unknown)
     dispatcher.add_handler(unknown_handler)
-    updater.start_polling()
+    environment = os.environ.get('ENV', 'DEV')
+    if environment == 'PROD':
+        updater.start_webhook(listen="0.0.0.0",
+                              port=int(os.environ.get('PORT', '8443')),
+                              url_path=token)
+        updater.bot.set_webhook(f"https://{os.environ['APP_NAME']}.herokuapp.com/" + token)
+    else:
+        updater.start_polling()
 
     updater.idle()
 
