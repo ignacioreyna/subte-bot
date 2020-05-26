@@ -1,0 +1,105 @@
+lines_stops = {'A': ['San Pedrito', 'San Jose de Flores', 'Carabobo', 'Puan',
+                     'Primera Junta', 'Acoyte', 'Rio de Janeiro', 'Castro Barros',
+                     'Loria', 'Plaza Miserere', 'Alberti', 'Pasco', 'Congreso',
+                     'Saenz Peña', 'Lima', 'Piedras', 'Peru', 'Plaza de Mayo'],
+
+               'B': ['Juan Manuel de Rosas', 'Echeverria', 'De Los Incas - Parque Chas',
+                     'Tronador - Villa Ortuzar', 'Federico Lacroze', 'Dorrego', 'Angel Gallardo',
+                     'Malabia', 'Medrano', 'Carlos Gardel', 'Pueyrredon', 'Pasteur', 'Callao',
+                     'Uruguay', 'Carlos Pellegrini', 'Florida', 'Leandro N. Alem'],
+
+               'D': ['Congreso de Tucuman', 'Juramento', 'Jose Hernandez', 'Olleros', 'Ministro Carranza',
+                     'Palermo', 'Plaza Italia', 'Scalabrini Ortiz', 'Bulnes', 'Agüero', 'Pueyrredon',
+                     'Facultad de Medicina', 'Callao', 'Tribunales', '9 de Julio', 'Catedral'],
+
+               'E': ['Retiro', 'Catalinas', 'Correo Central', 'Bolivar', 'Belgrano',
+                     'Independencia', 'San Jose', 'Entre Rios', 'Pichincha', 'Jujuy',
+                     'General Urquiza', 'Boedo', 'Av. La Plata', 'Jose Maria Moreno',
+                     'Emilio Mitre', 'Medalla Milagrosa', 'Varela', 'Plaza de los Virreyes']
+               }
+
+
+SOUTH = 'S'  # 0
+NORTH = 'N'  # 1
+lines_directions = {'A': {'San Pedrito': SOUTH, 'Plaza de Mayo': NORTH},
+                    'B': {'Juan Manuel de Rosas': SOUTH, 'Leandro N. Alem': NORTH},
+                    'D': {'Congreso de Tucuman': SOUTH, 'Catedral': NORTH},
+                    'E': {'Retiro': SOUTH, 'Plaza de los Virreyes': NORTH}
+                    }
+
+
+stops_ids = {
+        'A': {
+            'San Pedrito': '1059',
+            'San Jose de Flores': '1060',
+            'Carabobo': '1061',
+            'Puan': '1062',
+            'Primera Junta': '1063',
+            'Acoyte': '1064',
+            'Rio de Janeiro': '1065',
+            'Castro Barros': '1066',
+            'Loria': '1067',
+            'Plaza Miserere': '1068',
+            'Alberti': '1069',
+            'Pasco': '1070',
+            'Congreso': '1071',
+            'Saenz Peña': '1072',
+            'Lima': '1073',
+            'Piedras': '1074',
+            'Peru': '1075',
+            'Plaza de Mayo': '1076'},
+        'B': {
+            'Juan Manuel de Rosas': '1077',
+            'Echeverria': '1078',
+            'De Los Incas - Parque Chas': '1079',
+            'Tronador - Villa Ortuzar': '1080',
+            'Federico Lacroze': '1081',
+            'Dorrego': '1082',
+            'Angel Gallardo': '1083',
+            'Malabia': '1084',
+            'Medrano': '1085',
+            'Carlos Gardel': '1086',
+            'Pueyrredon': '1087',
+            'Pasteur': '1088',
+            'Callao': '1089',
+            'Uruguay': '1090',
+            'Carlos Pellegrini': '1091',
+            'Florida': '1092',
+            'Leandro N. Alem': '1093'},
+        'D': {
+            'Congreso de Tucuman': '1103',
+            'Juramento': '1104',
+            'Jose Hernandez': '1105',
+            'Olleros': '1106',
+            'Ministro Carranza': '1107',
+            'Palermo': '1108',
+            'Plaza Italia': '1109',
+            'Scalabrini Ortiz': '1110',
+            'Bulnes': '1111',
+            'Agüero': '1112',
+            'Pueyrredon': '1113',
+            'Facultad de Medicina': '1114',
+            'Callao': '1115',
+            'Tribunales': '1116',
+            '9 de Julio': '1117',
+            'Catedral': '1118'},
+        'E': {
+            'Bolivar': '1119',
+            'Belgrano': '1120',
+            'Independencia': '1121',
+            'San Jose': '1122',
+            'Entre Rios': '1123',
+            'Pichincha': '1124',
+            'Jujuy': '1125',
+            'General Urquiza': '1126',
+            'Boedo': '1127',
+            'La Plata': '1128',
+            'Jose Maria Moreno': '1129',
+            'Emilio Mitre': '1130',
+            'Medalla Milagrosa': '1131',
+            'Varela': '1132',
+            'Plaza de los Virreyes': '1133',
+            'Retiro': '1164',
+            'Catalinas': '1165',
+            'Correo Central': '1166'}
+        }
