@@ -17,12 +17,12 @@ api_url_subway_forecast = f"{api_url_subway}forecastGTFS?client_id={client_id}&c
 
 def get_api_resp():
     res = requests.get(api_url_subway_forecast)
-    # TODO act different if times out or subway is closed
+    ret = json.loads(res.content)
     if res.status_code == 500:  # Http status codes => https://developer.mozilla.org/es/docs/Web/HTTP/Status/200
+        if 'TimeoutException' in ret['message']: raise TimeoutError()
         return False
     # http://www.mocky.io/v2/5ecd56b43200004e002368dc => api response example
-    content = res.content
-    return json.loads(content)
+    return ret
 
 
 def get_forecast(data):
@@ -32,12 +32,13 @@ def get_forecast(data):
             forecasts = next(filter(lambda x: filter_subway(x, data), resp['Entity']), None)['Linea']['Estaciones']
             user_station = next(filter(lambda x: x['stop_id'] == make_stop_id(data), forecasts), None)
             subway_arrival = user_station['arrival']['time']
+            now = resp['Header']['timestamp']
             dt = (
-                 datetime.datetime.fromtimestamp(subway_arrival) - datetime.datetime.now()
+                 datetime.datetime.fromtimestamp(subway_arrival) - datetime.datetime.fromtimestamp(now)
                  )
             if dt > datetime.timedelta(0):  # if negative, train is arriving
                 user_forecast = f"El subte va a llegar en " \
-                                f"{int(dt.total_seconds()//60)}:{str(int(dt.total_seconds()%60)).zfill(2)}" \
+                                f"{int(dt.total_seconds()//59)}:{str(int(dt.total_seconds()%59)).zfill(2)}" \
                                 f" minutos!"
             else:
                 user_forecast = "El subte esta llegando!"
@@ -45,7 +46,7 @@ def get_forecast(data):
         else:
             return "No se a donde pretendes ir a estas horas... pero el subte esta cerrado!"
     except Exception as e:
-        logger.error(e)
+        logger.error(repr(e))
         return "Ups! Algo fallo, intenta otra vez!"
 
 
